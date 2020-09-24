@@ -1,0 +1,8 @@
+yarn android
+yarn start
+yarn add styled-components
+yarn add @types/styled-components -D
+
+yarn add @react-navigation/native
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+yarn add @react-navigation/stack
