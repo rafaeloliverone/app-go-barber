@@ -1,16 +1,18 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Button, Image } from 'react-native';
 
+import { Container, Title } from './styles';
 import logoImg from '../../assets/logo.png';
 
-import { Container } from './styles';
 
-const SignIn: React.FC = () => {
+const SignIn: React.FC = ({ navigation }) => {
   return (
     <Container>
-      <Image source={logoImg} />
+      <Button title="SignUp" onPress={() => navigation.navigate('SignUp')}></Button>
+      <Image source={logoImg}></Image>
+      <Title>Faça seu login</Title>
     </Container>
-  );
-};
+  )
+}
 
 export default SignIn;
