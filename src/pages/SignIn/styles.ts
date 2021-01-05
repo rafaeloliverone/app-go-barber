@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Platform } from 'react-native';
 import { isIphoneX, getBottomSpace} from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
@@ -6,8 +7,7 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
 
-  padding: 0 30px;
-
+  padding: 0 30px ${Platform.OS === 'android' ? 200: 100}px;
 `;
 
 export const Title = styled.Text`
