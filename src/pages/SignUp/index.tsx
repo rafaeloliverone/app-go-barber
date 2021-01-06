@@ -33,9 +33,31 @@ const SignUp: React.FC = () => {
             <Title>Crie sua conta</Title>
 
             <Form style={{width: '100%'}} ref={formRef} onSubmit={(data) => console.log(data)}>
-              <Input name="name" icon="user" placeholder="Nome" />
-              <Input name="email" icon="mail" placeholder="E-mail" />
-              <Input name="password" type="password" icon="lock" placeholder="Senha" secureText={true} />
+              <Input
+                autoCapitalize="words"
+                name="name"
+                icon="user"
+                placeholder="Nome"
+              />
+              <Input
+                name="email"
+                icon="mail"
+                placeholder="E-mail"
+                keyboardType="email-address"
+                autoCorrect={false}
+                autoCapitalize="none"
+              />
+              <Input
+                name="password"
+                type="password"
+                icon="lock"
+                placeholder="Senha"
+                secureText={true}
+                returnKeyType="send"
+                onSubmitEditing={() => {
+                  formRef.current?.submitForm()
+                }}
+              />
               <Button onPress={() => formRef.current?.submitForm()}>Cadastrar</Button>
             </Form>
 
