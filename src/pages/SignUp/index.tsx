@@ -7,6 +7,7 @@ import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
 import logoImg from '../../assets/logo.png';
 
+import api from '../../services/api';
 import getValidationErrors from '../../utils/getValidationErrors';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
@@ -36,6 +37,15 @@ const SignUp: React.FC = () => {
         await squema.validate(data, {
           abortEarly: false,
         })
+
+        api.post('/users', data);
+
+        Alert.alert(
+          'Cadastro realizado com sucesso',
+          'Você já pode fazer login.'
+        );
+
+        navigation.goBack();
 
       } catch(err) {
         if (err instanceof Yup.ValidationError) {
