@@ -11,7 +11,7 @@ import getValidationErrors from '../../utils/getValidationErrors';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { Container, Title, ForgotPassword, ForgotPasswordText, CreateAccountButton, CreateAccountButtonText } from './styles';
-
+import { useAuth } from '../../hooks/auth';
 
 interface SignInFormData {
   email: string;
@@ -22,9 +22,7 @@ const SignIn: React.FC = () => {
   const navigation = useNavigation();
   const formRef = useRef<FormHandles>(null);
 
-  const handleSubmit = useCallback((data: Object) => {
-    console.log(data);
-  }, [])
+  const { user, signIn } = useAuth();
 
   const handleSignIn = useCallback(
     async (data: SignInFormData) => {
@@ -39,6 +37,13 @@ const SignIn: React.FC = () => {
         await squema.validate(data, {
           abortEarly: false,
         })
+
+        await signIn({
+          email: data.email,
+          password: data.password,
+        });
+
+        console.log(user)
 
       } catch(err) {
         if (err instanceof Yup.ValidationError) {
